@@ -1,0 +1,528 @@
+[Language]
+Name           = C
+Extension      = c
+Keywords       = auto, break, case, char, const, continue, default, do, double, else
+               = enum, extern, float, for, goto, if, int, long, register, return
+               = short, signed, sizeof, static, struct, switch, typedef, union, unsigned, void
+               = volatile, while, inline, restrict, _Bool, _Complex, _Imaginary, _Alignas, _Alignof, _Atomic
+               =  _Static_assert, _Noreturn, _Thread_local, _Generic
+
+Conflicts      = input               
+Case Sensitive = true
+Options        =            
+             
+; =======================================================
+; Literals    
+; =======================================================              
+
+[Types]
+Integer      = int
+Real         = double
+Boolean      = boolean
+String       = String 
+
+[Function ID]
+Convention = camel
+Normal     = {Name}
+Conflict   = func_{Name}
+
+[Variable ID]
+Convention = camel
+Normal     = {Name}
+Conflict   = var_{Name}
+
+[String Literal]
+Text           = "{Characters}"
+Replace Char 1 = "
+Replace By 1   = \"
+Replace Char 2 = \
+Replace By 2   = \\
+
+[Boolean Literal]
+true     =  true
+false    =  false
+
+[Integer Literal]
+Text     = {Integral}
+
+[Real Literal]
+Text     = {Integral}.{Fractional}
+
+[Variable Access]
+Precedence = 100
+Text       = {Name}               | ~subscript
+           = {Name}[{Subscript}]  | subscript 
+           
+; =======================================================
+; Expressions      
+; =======================================================
+; 1. or 
+; 2. and 
+; 3. == 
+; 4. Relational >, < ...
+; 5. Addition 
+; 6. Multiply 
+; 7. Cast ()
+; 8. Unary: Not, !
+; 100. Atom, paranthesis
+         
+[Or]
+Precedence   = 1
+Needed 1     = 1
+Needed 2     = 2
+Text         = {1} {pipe}{pipe} {2}
+
+[And]
+Precedence   = 2
+Needed 1     = 2
+Needed 2     = 3
+Text         = {1} && {2}
+
+[Equals]
+Precedence   = 3                 |  ~string-string 
+             = 100               |  string-string
+             
+Needed 1     = 4                 |  ~string-string
+             = 100               |  string-string    
+             
+Needed 2     = 4                 |  ~string-string
+             = 1                 |  string-string   
+             
+Text         = {1} == {2}        |  ~string-string
+             = {1}.equals({2})   |  string-string
+
+[Not Equals]
+Precedence   = 3                 |  ~string-string 
+             = 100               |  string-string
+             
+Needed 1     = 4                 |  ~string-string
+             = 100               |  string-string    
+             
+Needed 2     = 4                 |  ~string-string
+             = 1                 |  string-string   
+             
+Text         = {1} != {2}        |  ~string-string
+             = !{1}.equals({2})   |  string-string
+             
+[Less Than]
+Precedence   = 4            
+             
+Needed 1     = 5                        |  ~string-string
+             = 100                      |  string-string    
+             
+Needed 2     = 5                        |  ~string-string
+             = 1                        |  string-string   
+             
+Text         = {1} < {2}                |  ~string-string
+             = {1}.compareTo({2}) < 0   |  string-string
+
+[Less Equal Than]
+Precedence   = 4            
+             
+Needed 1     = 5                        |  ~string-string
+             = 100                      |  string-string    
+             
+Needed 2     = 5                        |  ~string-string
+             = 1                        |  string-string   
+             
+Text         = {1} <= {2}               |  ~string-string
+             = {1}.compareTo({2}) <= 0  |  string-string
+
+[Greater Than]
+Precedence   = 4            
+             
+Needed 1     = 5                        |  ~string-string
+             = 100                      |  string-string    
+             
+Needed 2     = 5                        |  ~string-string
+             = 1                        |  string-string   
+             
+Text         = {1} > {2}                |  ~string-string
+             = {1}.compareTo({2}) > 0   |  string-string
+
+[Greater Equal Than]
+Precedence   = 4            
+             
+Needed 1     = 5                        |  ~string-string
+             = 100                      |  string-string    
+             
+Needed 2     = 5                        |  ~string-string
+             = 1                        |  string-string   
+             
+Text         = {1} >= {2}               |  ~string-string
+             = {1}.compareTo({2}) >= 0  |  string-string
+
+[Concatenate]
+Precedence   = 5
+
+Needed 1     = 5          | string-1
+             = 1          | ~string-1
+Needed 2     = 6
+
+Text         = {1} + {2}                     | string-1
+             = atoi({1}) + {2}               | integer-1
+             = strtod({1}) + {2}             | real-1
+             = Boolean.toString({1}) + {2}   | boolean-1
+
+[Add]
+Type         = real         | ~integer-integer
+             = integer      | integer-integer
+             
+Precedence   = 5
+Needed 1     = 5
+Needed 2     = 6
+Text         = {1} + {2}
+
+[Subtract]
+Type         = real         | ~integer-integer
+             = integer      | integer-integer
+
+Precedence   = 5
+Needed 1     = 5
+Needed 2     = 6
+Text         = {1} - {2}
+
+[Multiply]
+Type         = real         | ~integer-integer
+             = integer      | integer-integer
+
+Precedence   = 6
+Needed 1     = 6
+Needed 2     = 7
+Text         = {1} * {2}
+
+[Divide]
+Type         = real
+Precedence   = 6
+Needed 1     = 6              |  ~integer-integer
+             = 100            |  integer-integer
+
+Needed 2     = 7
+Text         = {1} / {2}              |  ~integer-integer  
+             = (double) {1} / {2}     |  integer-integer
+             
+[Modulus]
+Precedence   = 6
+Needed 1     = 6
+Needed 2     = 7
+Text         = {1} % {2}
+
+[Power]
+Type         = real
+Precedence   = 100
+Needed 1     = 0
+Needed 2     = 0
+Text         = pow({1}, {2})
+
+[Not]
+Type         = boolean
+Precedence   = 7
+Needed 1     = 7
+Text         = !{1}
+
+[Negate]
+Type         = real         | ~integer 
+             = integer      | integer 
+             
+Precedence   = 7
+Needed 1     = 7
+Text         = -{1}
+
+[Subexpression]
+Precedence   = 100
+Text         = ({Expression})
+
+; =======================================================
+; Intrinsic Functions      
+; =======================================================
+
+[Abs]
+Precedence = 100
+Needed 1   = 0 
+Text       = abs({1})
+
+[Cabs]
+Precedence = 100
+Needed 1   = 0 
+Text       = cabs({1})
+
+[Fabs]
+Precedence = 100
+Needed 1   = 0 
+Text       = fabs({1})
+
+
+[Labs]
+Precedence = 100
+Needed 1   = 0 
+Text       = labs({1})
+
+[Exp]
+Precedence = 100
+Needed 1   = 0 
+Text       = exp({1})
+
+[Frexp]
+Precedence = 100
+Needed 1   = 0
+Needed 2   = 0
+Text       = frexp({1},{2})
+
+[Ldexp]
+Precedence = 100
+Needed 1   = 0
+Needed 2   = 0
+Text       = ldexp({1},{2})
+
+
+[ArcCos]
+Precedence = 100
+Needed 1   = 0 
+Text       = acos({1})
+
+[ArcSin]
+Precedence = 100
+Needed 1   = 0 
+Text       = asin({1})
+
+[ArcTan]
+Precedence = 100
+Needed 1   = 0 
+Text       = atan({1})
+
+[Atan2]
+Precedence = 100
+Needed 1   = 0 
+Text       = atan2({1})
+
+[Char]
+Precedence = 100
+Needed 1   = 100
+Needed 2   = 0
+Text       = {1}.charAt({2})
+
+[Cos]
+Precedence = 100
+Needed 1   = 0 
+Text       = cos({1})
+
+[Cosh]
+Precedence = 100
+Needed 1   = 0 
+Text       = cosh({1})
+
+
+[Int]
+Precedence = 100
+Needed 1   = 0 
+Text       = floor({1})
+
+
+[Log]
+Precedence = 100
+Needed 1   = 0 
+Text       = log({1})
+
+[Log10]
+Precedence = 100
+Needed 1   = 0 
+Text       = log10({1})
+
+
+[Random]
+Precedence = 100
+Needed 1   = 0 
+Text       = rand()
+
+[Sin]
+Precedence = 100
+Needed 1   = 0 
+Text       = sin({1})
+
+
+[Sinh]
+Precedence = 100
+Needed 1   = 0 
+Text       = sinh({1})
+
+
+[Size]
+Precedence = 100
+Needed 1   = 100 
+Text       = sizeof({1})
+
+[Sqrt]
+Precedence = 100
+Needed 1   = 0 
+Text       = sqrt({1})
+
+[Tan]
+Precedence = 100
+Needed 1   = 0 
+Text       = tan({1})
+
+[Tanh]
+Precedence = 100
+Needed 1   = 0 
+Text       = tanh({1})
+
+[Hypot]
+Precedence = 100
+Needed 1   = 0 
+Needed 2   = 0 
+Text       = hypot({1},{2})
+
+[Ceil]
+Precedence = 100
+Needed 1   = 0 
+Text       = ceil({1})
+
+[Srand]
+Precedence = 100
+Needed 1   = 0 
+Text       = srand({1})
+
+
+[ToChar]
+Precedence = 100
+Needed 1   = 100 
+Text       = (char) {1}
+
+[ToCode]
+Precedence = 100
+Needed 1   = 100 
+Text       = (int) {1}[0]
+
+[ToFixed]
+Type       = string
+Precedence = 100
+Needed 1   = 0 
+Needed 2   = 0 
+Text       = toFixed({1},{2})
+
+[ToInteger]
+Precedence = 100
+Needed 1   = 0 
+Text       = Integer({1})
+
+[ToReal]
+Precedence = 100
+Needed 1   = 0 
+Text       = Double({1})
+
+[ToString]
+Precedence = 100
+Needed 1   = 100 
+Text       = {1}.toString()
+
+; =======================================================
+; Function call      
+; =======================================================
+
+[Function Call]
+Precedence = 100
+Text       = {name}({arguments}) 
+          
+[Argument]
+Separator  = ,{space}
+Text       = {expression}        
+
+; =======================================================
+; Program
+; =======================================================
+
+[Program]
+Text      = #include <stdio.h>
+          = #include <stdlib.h>
+		  = #include <math.h>
+          =
+          = -->MAIN                                                      |                   | 1
+          = -->FUNCTIONS                                                 |                   | 1
+          =                                                              | tofixed           | 1                   
+
+[Main]
+Text      = int main(int argc, char *argv[]) 
+          ={{       
+		  =
+          = -->BLOCK                                                     |           | 1  
+		  =
+		  = return 0;
+		  =
+          = }
+
+; =======================================================
+; Function  
+; =======================================================
+
+[Parameter]
+Separator = ,{space}
+Text      = {type} {name}             | ~array
+          = {type}[] {name}           | array
+          
+[Function]
+Text      = 
+          = {type} {name}({parameters}) {{      | return    
+          = void {name}({parameters}) {{        | ~return    
+          = -->BLOCK                                          |          | 1 
+          =                                                   |  return  | 1
+          = return {return};                                  |  return  | 1          
+          = } 
+          
+; =======================================================
+; Statements      
+; =======================================================
+
+[Assign]         
+Text       = {Variable} = {Expression};            
+            
+[Call]
+Text       = {Name}({Arguments});      
+
+[Comment]
+Text       = // {Text} 
+
+[Declare Name]      
+Separator  = ,{space}
+Text       = {name}                           | ~array   
+           = {name} = new {Type}[{Size}]      | array
+           
+[Declare]
+Text       = {Type} {Variables};              | ~array    
+           = {Type}[] {Variables};            | array  
+           
+[Do]
+Text       = do {{                 
+           = -->BLOCK                         |  | 1    
+           = } while ({condition});  
+           
+[For]
+Text       = for ({Variable} = {Start}; {Variable} <= {End}; {Variable}++) {{           | inc, ~step
+           = for ({Variable} = {Start}; {Variable} <= {End}; {Variable} += {step}) {{   | inc, step
+           = for ({Variable} = {Start}; {Variable} >= {End}; {Variable}--) {{           | ~inc, ~step
+           = for ({Variable} = {Start}; {Variable} >= {End}; {Variable} -= {step}) {{   | ~inc, step
+           = -->BLOCK                                                                   |              | 1
+           = }                                                       
+         
+[Input]
+Text       = {Variable} = scanf("%d",input);                              | integer
+           = {Variable} = scanf("%d",input);                              | real
+           = {Variable} = scanf("%d",input);                              | boolean
+           = {Variable} = scanf("%s",input);                              | string
+           = {Variable} = scanf("%d",input);                              | none
+ 
+[If]
+Text       = if ({condition}) {{ 
+           = -->TRUEBLOCK                  |        | 1
+           = } else {{                     | else 
+           = -->FALSEBLOCK                 | else   | 1 
+           = }  
+           
+[Output]
+Text       = printf({Expression});       | newline   
+           = printf({Expression});            | ~newline
+          
+[While]
+Text       = while ({condition}) {{  
+           = -->BLOCK                      |     | 1
+           = }  
+          
