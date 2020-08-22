@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<flowgorithm fileversion="2.11">
+    <attributes>
+        <attribute name="name" value=""/>
+        <attribute name="authors" value="samir"/>
+        <attribute name="about" value=""/>
+        <attribute name="saved" value="2020-08-21 11:23:12 &#19978;&#21320;"/>
+        <attribute name="created" value="c2FtaXI7U0FNSVIwQjc2OzIwMjAtMDgtMjE7MTA6MTA6MzIg5LiK5Y2IOzQzNTUw"/>
+        <attribute name="edited" value="c2FtaXI7U0FNSVIwQjc2OzIwMjAtMDgtMjE7MTE6MjM6MTIg5LiK5Y2IOzE7NDM2NjE="/>
+    </attributes>
+    <function name="Main" type="None" variable="">
+        <parameters/>
+        <body>
+            <comment text="[&#31243;&#24207;1]&#13;&#10;&#39064;&#30446;&#65306;&#26377;1&#12289;2&#12289;3&#12289;4&#20010;&#25968;&#23383;&#65292;&#33021;&#32452;&#25104;&#22810;&#23569;&#20010;&#20114;&#19981;&#30456;&#21516;&#19988;&#26080;&#37325;&#22797;&#25968;&#23383;&#30340;&#19977;&#20301;&#25968;&#65311;&#37117;&#26159;&#22810;&#23569;&#65311;&#13;&#10;1.&#31243;&#24207;&#20998;&#26512;&#65306;&#21487;&#22635;&#22312;&#30334;&#20301;&#12289;&#21313;&#20301;&#12289;&#20010;&#20301;&#30340;&#25968;&#23383;&#37117;&#26159;1&#12289;2&#12289;3&#12289;4&#12290;&#32452;&#25104;&#25152;&#26377;&#30340;&#25490;&#21015;&#21518;&#20877;&#21435;&#25481;&#19981;&#28385;&#36275;&#26465;&#20214;&#30340;&#25490;&#21015;&#12290;&#13;&#10;"/>
+            <declare name="i" type="Integer" array="False" size=""/>
+            <declare name="j" type="Integer" array="False" size=""/>
+            <declare name="k" type="Integer" array="False" size=""/>
+            <assign variable="i" expression="1"/>
+            <assign variable="j" expression="1"/>
+            <assign variable="k" expression="1"/>
+            <output expression="&quot;&#25442;&#34892;&quot;" newline="True"/>
+            <for variable="i" start="i" end="5" direction="inc" step="1">
+                <for variable="j" start="1" end="5" direction="inc" step="1">
+                    <for variable="k" start="1" end="5" direction="inc" step="1">
+                        <if expression="i!=k &amp;&amp; i!=j &amp;&amp; j!=k">
+                            <then>
+                                <output expression="&quot;&#32452;&#21512;&#32467;&#26524;&#65306;&quot; &amp; i &amp; &quot;,&quot; &amp; j &amp; &quot;,&quot; &amp; k &amp;&quot;&quot;" newline="True"/>
+                            </then>
+                            <else/>
+                        </if>
+                    </for>
+                </for>
+            </for>
+        </body>
+    </function>
+</flowgorithm>

@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<flowgorithm fileversion="2.11">
+    <attributes>
+        <attribute name="name" value=""/>
+        <attribute name="authors" value="samir"/>
+        <attribute name="about" value=""/>
+        <attribute name="saved" value="2020-08-22 10:02:32 &#19978;&#21320;"/>
+        <attribute name="created" value="c2FtaXI7U0FNSVIwQjc2OzIwMjAtMDgtMjI7MDk6MzY6NDcg5LiK5Y2IOzQzNTcz"/>
+        <attribute name="edited" value="c2FtaXI7U0FNSVIwQjc2OzIwMjAtMDgtMjI7MTA6MDI6MzIg5LiK5Y2IOzM7NDM2NjI="/>
+    </attributes>
+    <function name="Main" type="None" variable="">
+        <parameters/>
+        <body>
+            <comment text="&#31243;&#24207;6&#13;&#10;&#39064;&#30446;&#65306;&#29992;*&#21495;&#36755;&#20986;&#23383;&#27597;C&#30340;&#22270;&#26696;&#12290;&#13;&#10;1.&#31243;&#24207;&#20998;&#26512;&#65306;&#21487;&#20808;&#29992;'*'&#21495;&#22312;&#32440;&#19978;&#20889;&#20986;&#23383;&#27597;C&#65292;&#20877;&#20998;&#34892;&#36755;&#20986;&#13;&#10;"/>
+            <output expression="&quot;Hello C-world!&quot;" newline="True"/>
+            <comment text="&#26041;&#27861;&#19968;"/>
+            <output expression="&quot;****************&quot;" newline="True"/>
+            <output expression="&quot;*&quot;" newline="True"/>
+            <output expression="&quot;*&quot;" newline="True"/>
+            <output expression="&quot;****************&quot;" newline="True"/>
+            <comment text="&#26041;&#27861;&#20108;"/>
+            <declare name="i" type="Integer" array="False" size=""/>
+            <for variable="i" start="0" end="4" direction="inc" step="1">
+                <if expression="i == 0">
+                    <then>
+                        <output expression="&quot;****************&quot;" newline="True"/>
+                    </then>
+                    <else/>
+                </if>
+                <if expression="i == 1 || i == 2">
+                    <then>
+                        <output expression="&quot;*&quot;" newline="True"/>
+                    </then>
+                    <else/>
+                </if>
+                <if expression="i ==3">
+                    <then>
+                        <output expression="&quot;****************&quot;" newline="True"/>
+                    </then>
+                    <else/>
+                </if>
+            </for>
+        </body>
+    </function>
+</flowgorithm>

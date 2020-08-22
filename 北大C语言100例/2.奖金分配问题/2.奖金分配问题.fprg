@@ -1,0 +1,62 @@
+<?xml version="1.0"?>
+<flowgorithm fileversion="2.11">
+    <attributes>
+        <attribute name="name" value=""/>
+        <attribute name="authors" value="samir"/>
+        <attribute name="about" value=""/>
+        <attribute name="saved" value="2020-08-22 12:57:52 &#19978;&#21320;"/>
+        <attribute name="created" value="c2FtaXI7U0FNSVIwQjc2OzIwMjAtMDgtMjE7MTE6MjM6NDAg5LiK5Y2IOzQzNTU0"/>
+        <attribute name="edited" value="c2FtaXI7U0FNSVIwQjc2OzIwMjAtMDgtMjI7MTI6NTc6NTIg5LiK5Y2IOzE7NDM2NzQ="/>
+    </attributes>
+    <function name="Main" type="None" variable="">
+        <parameters/>
+        <body>
+            <comment text="[&#31243;&#24207;2]&#13;&#10;&#39064;&#30446;&#65306;&#20225;&#19994;&#21457;&#25918;&#30340;&#22870;&#37329;&#26681;&#25454;&#21033;&#28070;&#25552;&#25104;&#12290;&#21033;&#28070;(I)&#20302;&#20110;&#25110;&#31561;&#20110;10&#19975;&#20803;&#26102;&#65292;&#22870;&#37329;&#21487;&#25552;10%&#65307;&#21033;&#28070;&#39640;&#20110;10&#19975;&#20803;&#65292;&#20302;&#20110;20&#19975;&#20803;&#26102;&#65292;&#20302;&#20110;10&#19975;&#20803;&#30340;&#37096;&#20998;&#25353;10%&#25552;&#25104;&#65292;&#39640;&#20110;10&#19975;&#20803;&#30340;&#37096;&#20998;&#65292;&#21487;&#21487;&#25552;&#25104;7.5%&#65307;20&#19975;&#21040;40&#19975;&#20043;&#38388;&#26102;&#65292;&#39640;&#20110;20&#19975;&#20803;&#30340;&#37096;&#20998;&#65292;&#21487;&#25552;&#25104;5%&#65307;40&#19975;&#21040;60&#19975;&#20043;&#38388;&#26102;&#39640;&#20110;40&#19975;&#20803;&#30340;&#37096;&#20998;&#65292;&#21487;&#25552;&#25104;3%&#65307;60&#19975;&#21040;100&#19975;&#20043;&#38388;&#26102;&#65292;&#39640;&#20110;60&#19975;&#20803;&#30340;&#37096;&#20998;&#65292;&#21487;&#25552;&#25104;1.5%&#65292;&#39640;&#20110;100&#19975;&#20803;&#26102;&#65292;&#36229;&#36807;100&#19975;&#20803;&#30340;&#37096;&#20998;&#25353;1%&#25552;&#25104;&#65292;&#20174;&#38190;&#30424;&#36755;&#20837;&#24403;&#26376;&#21033;&#28070;I&#65292;&#27714;&#24212;&#21457;&#25918;&#22870;&#37329;&#24635;&#25968;&#65311;&#13;&#10;1.&#31243;&#24207;&#20998;&#26512;&#65306;&#35831;&#21033;&#29992;&#25968;&#36724;&#26469;&#20998;&#30028;&#65292;&#23450;&#20301;&#12290;&#27880;&#24847;&#23450;&#20041;&#26102;&#38656;&#25226;&#22870;&#37329;&#23450;&#20041;&#25104;&#38271;&#25972;&#22411;&#12290;&#13;&#10;"/>
+            <declare name="i" type="Integer" array="False" size=""/>
+            <declare name="bonus1, bonus2, bonus4, bonus6, bonus10, bonus" type="Integer" array="False" size=""/>
+            <input variable="i"/>
+            <assign variable="bonus1" expression="100000*0.1"/>
+            <assign variable="bonus2" expression="bonus1+100000*0.75"/>
+            <assign variable="bonus4" expression="bonus2+200000*0.5"/>
+            <assign variable="bonus6" expression="bonus4+200000*0.3"/>
+            <assign variable="bonus10" expression="bonus6+400000*0.15"/>
+            <if expression="i&lt;=100000">
+                <then>
+                    <assign variable="bonus" expression="i*0.1"/>
+                </then>
+                <else>
+                    <if expression="i&lt;=200000">
+                        <then>
+                            <assign variable="bonus" expression="bonus1+(i-100000)*0.075"/>
+                        </then>
+                        <else>
+                            <if expression="i&lt;=400000">
+                                <then>
+                                    <assign variable="bonus" expression="bonus2+(i-200000)*0.05"/>
+                                </then>
+                                <else>
+                                    <if expression="i&lt;=600000">
+                                        <then>
+                                            <assign variable="bonus" expression="bonus4+(i-400000)*0.03"/>
+                                        </then>
+                                        <else>
+                                            <if expression="i&lt;=1000000">
+                                                <then>
+                                                    <assign variable="bonus" expression="bonus6+(i-600000)*0.015"/>
+                                                </then>
+                                                <else>
+                                                    <assign variable="bonus" expression="bonus10+(i-1000000)*0.01"/>
+                                                </else>
+                                            </if>
+                                        </else>
+                                    </if>
+                                </else>
+                            </if>
+                        </else>
+                    </if>
+                </else>
+            </if>
+            <output expression="&quot;bonus=:&quot;&amp; bonus" newline="True"/>
+        </body>
+    </function>
+</flowgorithm>

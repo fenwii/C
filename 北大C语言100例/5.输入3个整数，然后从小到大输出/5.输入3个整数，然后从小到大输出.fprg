@@ -1,0 +1,52 @@
+<?xml version="1.0"?>
+<flowgorithm fileversion="2.11">
+    <attributes>
+        <attribute name="name" value=""/>
+        <attribute name="authors" value="samir"/>
+        <attribute name="about" value=""/>
+        <attribute name="saved" value="2020-08-22 09:34:22 &#19978;&#21320;"/>
+        <attribute name="created" value="c2FtaXI7U0FNSVIwQjc2OzIwMjAtMDgtMjI7MDk6MTk6MTAg5LiK5Y2IOzQzNTY0"/>
+        <attribute name="edited" value="c2FtaXI7U0FNSVIwQjc2OzIwMjAtMDgtMjI7MDk6MzQ6MjIg5LiK5Y2IOzI7NDM2NzM="/>
+    </attributes>
+    <function name="Main" type="None" variable="">
+        <parameters/>
+        <body>
+            <comment text="&#31243;&#24207;5&#13;&#10;&#39064;&#30446;&#65306;&#36755;&#20837;&#19977;&#20010;&#25972;&#25968;x,y,z&#65292;&#35831;&#25226;&#36825;&#19977;&#20010;&#25968;&#30001;&#23567;&#21040;&#22823;&#36755;&#20986;&#12290;&#13;&#10;1.&#31243;&#24207;&#20998;&#26512;&#65306;&#25105;&#20204;&#24819;&#21150;&#27861;&#25226;&#26368;&#23567;&#30340;&#25968;&#25918;&#21040;x&#19978;&#65292;&#20808;&#23558;x&#19982;y&#36827;&#34892;&#27604;&#36739;&#65292;&#22914;&#26524;x&gt;y&#21017;&#23558;x&#19982;y&#30340;&#20540;&#36827;&#34892;&#20132;&#25442;&#65292;&#28982;&#21518;&#20877;&#29992;x&#19982;z&#36827;&#34892;&#27604;&#36739;&#65292;&#22914;&#26524;x&gt;z&#21017;&#23558;x&#19982;z&#30340;&#20540;&#36827;&#34892;&#20132;&#25442;&#65292;&#36825;&#26679;&#33021;&#20351;x&#26368;&#23567;&#12290;&#13;&#10;"/>
+            <declare name="x, y, z, t" type="Integer" array="False" size=""/>
+            <output expression="&quot;&#35831;&#36755;&#20837;&#31532;&#19968;&#20010;&#25972;&#25968;x&quot;" newline="True"/>
+            <input variable="x"/>
+            <output expression="&quot;&#35831;&#36755;&#20837;&#31532;&#20108;&#20010;&#25972;&#25968;y&quot;" newline="True"/>
+            <input variable="y"/>
+            <output expression="&quot;&#35831;&#36755;&#20837;&#31532;&#19977;&#20010;&#25972;&#25968;z&quot;" newline="True"/>
+            <input variable="z"/>
+            <if expression="x&gt;y">
+                <then>
+                    <comment text="&#20132;&#25442;x,y&#20540;"/>
+                    <assign variable="t" expression="x"/>
+                    <assign variable="x" expression="y"/>
+                    <assign variable="y" expression="t"/>
+                </then>
+                <else/>
+            </if>
+            <if expression="x&gt;z">
+                <then>
+                    <comment text="&#20132;&#25442;x,z&#20540;"/>
+                    <assign variable="t" expression="z"/>
+                    <assign variable="z" expression="x"/>
+                    <assign variable="x" expression="t"/>
+                </then>
+                <else/>
+            </if>
+            <if expression="y&gt;z">
+                <then>
+                    <comment text="&#20132;&#25442;y,z&#20540;"/>
+                    <assign variable="t" expression="y"/>
+                    <assign variable="y" expression="z"/>
+                    <assign variable="z" expression="t"/>
+                </then>
+                <else/>
+            </if>
+            <output expression="&quot;&#20174;&#23567;&#21040;&#22823;&#39034;&#24207;&#20026;&#65306;&quot; &amp;x &amp;&quot; &quot; &amp;y &amp;&quot; &quot; &amp;z" newline="True"/>
+        </body>
+    </function>
+</flowgorithm>

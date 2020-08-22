@@ -1,0 +1,119 @@
+<?xml version="1.0"?>
+<flowgorithm fileversion="2.11">
+    <attributes>
+        <attribute name="name" value=""/>
+        <attribute name="authors" value="samir"/>
+        <attribute name="about" value=""/>
+        <attribute name="saved" value="2020-08-22 09:19:06 &#19978;&#21320;"/>
+        <attribute name="created" value="c2FtaXI7U0FNSVIwQjc2OzIwMjAtMDgtMjI7MDg6MjE6MzEg5LiK5Y2IOzQzNTU5"/>
+        <attribute name="edited" value="c2FtaXI7U0FNSVIwQjc2OzIwMjAtMDgtMjI7MDk6MTk6MDYg5LiK5Y2IOzI7NDM2Nzg="/>
+    </attributes>
+    <function name="Main" type="None" variable="">
+        <parameters/>
+        <body>
+            <comment text="&#31243;&#24207;4&#13;&#10;&#39064;&#30446;&#65306;&#36755;&#20837;&#26576;&#24180;&#26576;&#26376;&#26576;&#26085;&#65292;&#21028;&#26029;&#36825;&#19968;&#22825;&#26159;&#36825;&#19968;&#24180;&#30340;&#31532;&#20960;&#22825;&#65311;&#13;&#10;1.&#31243;&#24207;&#20998;&#26512;&#65306;&#20197;3&#26376;5&#26085;&#20026;&#20363;&#65292;&#24212;&#35813;&#20808;&#25226;&#21069;&#20004;&#20010;&#26376;&#30340;&#21152;&#36215;&#26469;&#65292;&#28982;&#21518;&#20877;&#21152;&#19978;5&#22825;&#21363;&#26412;&#24180;&#30340;&#31532;&#20960;&#22825;&#65292;&#29305;&#27530;&#24773;&#20917;&#65292;&#38384;&#24180;&#19988;&#36755;&#20837;&#26376;&#20221;&#22823;&#20110;3&#26102;&#38656;&#32771;&#34385;&#22810;&#21152;&#19968;&#22825;&#12290;&#13;&#10;"/>
+            <declare name="day, month, year, sum, leap" type="Integer" array="False" size=""/>
+            <output expression="&quot;&#35831;&#20998;&#21035;&#36755;&#20837;year,month,day&quot;" newline="True"/>
+            <input variable="year"/>
+            <input variable="month"/>
+            <input variable="day"/>
+            <comment text="&#35745;&#31639;&#26376;&#24635;&#22825;&#25968;"/>
+            <if expression="month&lt;=12 &amp;&amp; month&gt;=1">
+                <then>
+                    <if expression="month == 1">
+                        <then>
+                            <assign variable="sum" expression="0"/>
+                        </then>
+                        <else/>
+                    </if>
+                    <if expression="month == 2">
+                        <then>
+                            <assign variable="sum" expression="31"/>
+                        </then>
+                        <else/>
+                    </if>
+                    <if expression="month == 3">
+                        <then>
+                            <assign variable="sum" expression="59"/>
+                        </then>
+                        <else/>
+                    </if>
+                    <if expression="month == 4">
+                        <then>
+                            <assign variable="sum" expression="90"/>
+                        </then>
+                        <else/>
+                    </if>
+                    <if expression="month == 5">
+                        <then>
+                            <assign variable="sum" expression="120"/>
+                        </then>
+                        <else/>
+                    </if>
+                    <if expression="month == 6">
+                        <then>
+                            <assign variable="sum" expression="151"/>
+                        </then>
+                        <else/>
+                    </if>
+                    <if expression="month == 7">
+                        <then>
+                            <assign variable="sum" expression="181"/>
+                        </then>
+                        <else/>
+                    </if>
+                    <if expression="month == 8">
+                        <then>
+                            <assign variable="sum" expression="212"/>
+                        </then>
+                        <else/>
+                    </if>
+                    <if expression="month == 9">
+                        <then>
+                            <assign variable="sum" expression="243"/>
+                        </then>
+                        <else/>
+                    </if>
+                    <if expression="month == 10">
+                        <then>
+                            <assign variable="sum" expression="273"/>
+                        </then>
+                        <else/>
+                    </if>
+                    <if expression="month == 11">
+                        <then>
+                            <assign variable="sum" expression="304"/>
+                        </then>
+                        <else/>
+                    </if>
+                    <if expression="month == 12">
+                        <then>
+                            <assign variable="sum" expression="334"/>
+                        </then>
+                        <else/>
+                    </if>
+                </then>
+                <else>
+                    <output expression="&quot;&#26085;&#26399;&#38169;&#35823;&quot;" newline="True"/>
+                </else>
+            </if>
+            <comment text="&#21028;&#26029;&#38384;&#24180;"/>
+            <assign variable="sum" expression="sum+day"/>
+            <if expression="(year%400==0)||(year%4==0&amp;&amp;year%100!=0)">
+                <then>
+                    <assign variable="leap" expression="1"/>
+                </then>
+                <else>
+                    <assign variable="leap" expression="0"/>
+                </else>
+            </if>
+            <if expression="leap==1 &amp;&amp; month&gt;2">
+                <then>
+                    <assign variable="sum" expression="sum + 1"/>
+                </then>
+                <else/>
+            </if>
+            <output expression="&quot;&#32473;&#23450;&#30340;&quot;&amp;year&amp;&quot;&#24180;&quot;&amp;month&amp;&quot;&#26376;&quot;&amp;day&amp;&quot;&#26085;&#26159;&#20170;&#24180;&#30340;&#31532;&quot;&amp;sum&amp;&quot;&#22825;&quot;" newline="True"/>
+        </body>
+    </function>
+</flowgorithm>
