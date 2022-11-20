@@ -3,10 +3,24 @@
 
 
 
-联系交流方式
 
-1，在知识星球App搜索
-知识星球：C语言C++汇编研究中心
+<p align="center">
+================深度交流================
+</p>
 
-2，直接访问星球地址加入
-知识星球地址：https://t.zsxq.com/jeYVJuj
+<p align="center">
+  
+		 鸿蒙开发者联盟QQ交流群1:184548177
+		 鸿蒙开发者联盟QQ交流群2:374825209
+		 微信公众号(fenwii-tec)：分微科技
+		 头条，抖音： 鸭嘴兽工厂
+		 Github: https://github.com/fenwii
+		 Gitee:  https://gitee.com/samir/OpenHarmony
+		 微信小助理号：SocratesSchool
+		 鸿蒙开发者交流知识星球：鸿蒙开发者联盟   https://t.zsxq.com/2Nj6UnY 
+		 技术交流知识星球：C语言C++汇编研究中心   https://t.zsxq.com/jeYVJuj
+		 创新战略交流知识星球：毛选研究社 https://t.zsxq.com/QRzfYJu 
+</p>  
+<p align="center">
+================深度交流================
+</p>
